@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Seedlings Web App</title>
+	<link rel="stylesheet" type="text/css" href="anotherstyle.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+<body>
+	<header>
+		<nav>
+			<div class="logo">
+				<img class="img" src="logo.png" alt="Seedlings Web App Logo">
+			</div>
+            <div class="nav-links">
+                <ul>
+                  <li><button class="navbtn"><i class="fa fa-shopping-cart"></i></button></li>
+                  <li><button class="navbtn"><i class="fa fa-envelope"></i></button></li>
+                  <li><button class="navbtn"><i class="fa fa-phone"></i></button></li>
+                  <li><button class="navbtn"><i class="fa fa-bell"></i></button></li>
+                  <li class="dropdown">
+                    <button class="navbtn"><i class="fa fa-user-circle"></i></button>
+                    <div class="dropdown-content">
+                      <button class="navbtn">Settings</button>
+                      <button class="navbtn">Logout</button>
+                    </div>
+                    
+                </li>
+                  <li><button class="navbtn" id="sellBtn">Sell with us</button></li>
+                </ul>
+              </div>
+              
+            
+		</nav>
+		<div class="hero">
+			<h2>Welcome to MbeguHub</h2>
+			<p>We connect farmers with suppliers by providing quality seedlings at affordable prices.</p>
+			<form>
+				<input type="text" placeholder="Search">
+				<button type="submit">Search</button>
+			</form>
+		</div>
+	</header>
+	<main>
+    <div class="categories-container">
+      <form>
+        <h2>Step 1: Add Photos</h2>
+        <label for="category">Category:</label>
+        <select id="category" name="category">
+          <option value="">-- Select a Category --</option>
+          <option value="Vegetables">Vegetables</option>
+          <option value="Fruits">Fruits</option>
+          <option value="Herbs">Herbs</option>
+        </select>
+        <label for="location">Location:</label>
+        <select id="location" name="location">
+          <option value="">-- Select a Location --</option>
+          <option value="Nairobi">Nairobi</option>
+          <option value="Mombasa">Mombasa</option>
+          <option value="Kisumu">Kisumu</option>
+        </select>
+        <label for="sub-county">Sub-County:</label>
+        <select id="sub-county" name="sub-county">
+          <option value="">-- Select a Sub-County --</option>
+          <option value="Embakasi">Embakasi</option>
+          <option value="Kilifi">Kilifi</option>
+          <option value="Kisumu East">Kisumu East</option>
+        </select>
+        <label for="photos">Photos:</label>
+        <input type="file" id="photos" name="photos" multiple>
+        <button type="button" onclick="nextStep()">Next</button>
+      </form>
+    </div>
+    <footer>
+		<div class="footer-links">
+			<ul>
+				<li><a href="#">About Us</a></li>
+				<li><a href="#">Contact</a></li>
+				<li><a href="#">FAQ</a></li>
+				<li><a href="#">Careers</a></li>
+                &copy; 2023 Seedling Supplier. All rights reserved.
+			</ul>
+        </div>
+    </main>
+	
+    </footer>
+    <script>
+      function nextStep() {
+        // Validate form fields, and show step 2 if valid
+        const category = document.getElementById('category').value;
+        const location = document.getElementById('location').value;
+        const subCounty = document.getElementById('sub-county').value;
+        const photos = document.getElementById('photos').value;
+        if (category && location && subCounty && photos) {
+          // Hide step 1, and show step 2
+          document.querySelector('.form h2').innerText = 'Step 2: Add Details';
+          const step1Fields = document.querySelectorAll('.form label, .form input[type=file], .form button');
+          for (let i = 0; i < step1Fields.length; i++) {
+            step1Fields[i].style.display = 'none';
+          }
+          const step2Fields = document.querySelectorAll('.form input[type=text], .form textarea, .form button[type=submit]');
+          for (let i = 0; i < step2Fields.length; i++) {
+            step2Fields[i].style.display = 'block';
+          }
+        } else {
+          alert('Please fill in all fields.');
+        }
+      }
+    </script>
+  </body>
+</html>

@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Seedlings Web App</title>
+	<link rel="stylesheet" href="{{ url_for('static', path='css/anotherstyle.css') }}">
+</head>
+<body>
+	<header>
+		<nav>
+			<div class="logo">
+				<img class="img" src="{{ url_for('static', path='img/logo.png') }}" alt="Seedlings Web App Logo">
+			</div>
+            <div class="nav-links">
+                <ul>
+                    <li><button class="navbtn" id="signInBtn">Sign In</button></li>
+                    <li><button class="navbtn" id="registerBtn">Register</button></li>
+                    <li><button class="navbtn" id="sellBtn">Sell with us</button></li>
+                </ul>
+            </div>
+            
+            <!-- Sign In Modal -->
+            <div id="signInModal" class="modal">
+                <span class="close" onclick="document.getElementById('signInModal').style.display='none'">&times;</span>
+                    <div class="sign-in-form">
+                        <h2>Sign In</h2>
+                        <form action="/auth/login" method="POST">
+                          <div class="form-group">
+                            <label for="email">Email</label>
+                            <input type="email" id="email" name = "email" placeholder="Enter Email" required>
+                          </div>
+                          <div class="form-group">
+                            <label for="password">Password</label>
+                            <input type="password" name = "password" id="password" placeholder="Enter Password" required>
+                          </div>
+                          <div class="form-group">
+                            <input type="checkbox" id="stayLoggedIn">
+                            <label for="stayLoggedIn">Stay logged in</label>
+                        </div>
+                          <button class="btn sign-in-btn">Sign In</button>
+                        </form>
+                        <p>Don't have an account? <a href="#" id = "registerLink">Register</a></p>
+                        <div class="separator">
+                          <span>or</span>
+                        </div>
+                        <button class="btn google-btn" onclick="location.href='/auth/google'">Register with Google</button>
+                      </div>
+                       
+                
+            </div>
+            
+            <!-- Register Modal -->
+            <div id="registerModal" class="modal">
+                    <span class="close">&times;</span>
+                    <div class="sign-in-form">
+                        <h2>Register new account</h2>
+                        <form action="/auth/signup" method="POST">
+                          <div class="form-group">
+                            <label for="email">Email:</label>
+                            <input type="email" id="email" name="email" placeholder="Enter email" required>
+                          </div>
+                          <div class="form-group">
+                            <label for="firstName">First Name:</label>
+                            <input type="text" id="firstName" name="firstname" placeholder="Enter first name" required>
+                          </div>
+                          <div class="form-group">
+                            <label for="lastName">Last Name:</label>
+                            <input type="text" id="lastName" name="lastname" placeholder="Enter last name" required>
+                          </div>
+                          <div class="form-group">
+                            <label for="phonenumber">Phone number:</label>
+                            <input type="phonenumber" id="phonenumber" name="phone_number" placeholder="Enter phone number in the format 07xxxxxxxx">
+                          </div>
+                          <div class="form-group">
+                            <label for="password">Password:</label>
+                            <input type="password" id="password" name="password" placeholder="Enter password" required>
+                          </div>
+                          <div class="form-group">
+                            <label for="confirmPassword">Confirm Password:</label>
+                            <input type="password" id="confirmPassword" name="confirmpassword" placeholder="Confirm password" required>
+                          </div>
+                          <button type="submit" class="btn">Register</button>
+                        </form>
+                        <div class="signup-link">
+                          <p>Already have an account? <a id = "signInLink" href="#">Sign in</a></p>
+            
+                      </div>
+                      
+            </div>
+            
+            <script>
+                var signInModal = document.getElementById("signInModal");
+                var registerModal = document.getElementById("registerModal");
+                var signInBtn = document.getElementById("signInBtn");
+                var registerBtn = document.getElementById("registerBtn");
+                var signInLink = document.getElementById("signInLink");
+                var registerLink = document.getElementById("registerLink");
+                var sellBtn = document.getElementById("sellBtn");
+                var closeBtns = document.getElementsByClassName("close");
+            
+                signInBtn.onclick = function() {
+                    signInModal.style.display = "block";
+                }
+            
+                registerBtn.onclick = function() {
+                    registerModal.style.display = "block";
+                }
+            
+                sellBtn.onclick = function() {
+                    signInModal.style.display = "block";
+                }
+            
+                signInLink.onclick = function() {
+                    signInModal.style.display = "block";
+                    registerModal.style.display = "none";
+                }
+            
+                registerLink.onclick = function() {
+                    registerModal.style.display = "block";
+                    signInModal.style.display = "none";
+                }
+            
+                for (var i = 0; i < closeBtns.length; i++) {
+                    closeBtns[i].onclick = function() {
+                        signInModal.style.display = "none";
+                        registerModal.style.display = "none";
+                    }
+                }
+            
+                window.onclick = function(event) {
+                    if (event.target == signInModal || event.target == registerModal) {
+                        signInModal.style.display = "none";
+                        registerModal.style.display = "none";
+                    }
+                }
+                
+                    // Get the modal
+                    var modal = document.getElementById("signInModal");
+                    // When the user clicks anywhere outside of the modal, close it
+                    window.addEventListener("click", function(event) {
+                        if (event.target == modal) {
+                        modal.style.display = "none";
+                        }
+                    });
+                    // Check if the cookie is set
+if (document.cookie.indexOf("stayLoggedIn=true") !== -1) {
+    // Set the email and password fields with the values from the cookie
+    var email = getCookieValue("email");
+    var password = getCookieValue("password");
+    document.getElementById("email").value = email;
+    document.getElementById("password").value = password;
+}
+
+// Function to get the value of a cookie by name
+function getCookieValue(name) {
+    var cookies = document.cookie.split("; ");
+    for (var i = 0; i < cookies.length; i++) {
+        var cookie = cookies[i].split("=");
+        if (cookie[0] === name) {
+            return cookie[1];
+        }
+    }
+    return "";
+}
+
+                    // Get the checkbox element
+var stayLoggedInCheckbox = document.getElementById("stayLoggedIn");
+
+// Check if the checkbox is checked
+if (stayLoggedInCheckbox.checked) {
+    // Set the cookie to expire in 7 days
+    var expirationDate = new Date();
+    expirationDate.setDate(expirationDate.getDate() + 7);
+    document.cookie = "stayLoggedIn=true;expires=" + expirationDate.toUTCString() + ";path=/";
+}
+
+                  
+            </script>
+            
+		</nav>
+		<div class="hero">
+			<h2>Welcome to MbeguHub</h2>
+			<p>We connect farmers with suppliers by providing quality seedlings at affordable prices.</p>
+			<form>
+				<input type="text" placeholder="Search">
+				<button type="submit">Search</button>
+			</form>
+		</div>
+	</header>
+	<main>
+      <div class="categories-container">
+		<div class="dropdown">
+            <h3>Select Seedling Type</h3>
+            <ul>
+              <li><a href="#">Flowers</a></li>
+              <li><a href="#">Vegetables</a></li>
+              <li><a href="#">Fruits</a></li>
+              <li><a href="#">Trees</a></li>
+            </ul>
+          </div>
+          
+		<div class="seedlings">
+			<h3>Seedlings</h3>
+            <div class="sort-by">
+                <label for="sort">Sort by:</label>
+                <select name="sort" id="sort">
+                  <option value="default">Default</option>
+                  <option value="price-low-to-high">Price: Low to High</option>
+                  <option value="price-high-to-low">Price: High to Low</option>
+                  <option value="name-a-to-z">Name: A to Z</option>
+                  <option value="name-z-to-a">Name: Z to A</option>
+                </select>
+              </div>
+			<div class="seedling">
+				<img src="https://via.placeholder.com/150" alt="Seedling Image">
+				<h4>Seedling Name</h4>
+				<p>Seedling Description</p>
+				<p class="price">$10.00</p>
+				<button class="buy">Buy Now</button>
+			</div>
+			<div class="seedling">
+				<img src="https://via.placeholder.com/150" alt="Seedling Image">
+				<h4>Seedling Name</h4>
+				<p>Seedling Description</p>
+				<p class="price">$10.00</p>
+				<button class="buy">Buy Now</button>
+			</div>
+			<div class="seedling">
+				<img src="https://via.placeholder.com/150" alt="Seedling Image">
+				<h4>Seedling Name</h4>
+				<p>Seedling Description</p>
+				<p class="price">$10.00</p>
+				<button class="buy">Buy Now</button>
+			</div>
+			<div class="seedling">
+				<img src="https://via.placeholder.com/150" alt="Seedling Image">
+				<h4>Seedling Name</h4>
+				<p>Seedling Description</p>
+				<p class="price">$10.00</p>
+				<button class="buy">Buy Now</button>
+			</div>
+		</div>
+    </div>
+	</main>
+	<footer>
+		<div class="footer-links">
+			<ul>
+				<li><a href="#">About Us</a></li>
+				<li><a href="#">Contact</a></li>
+				<li><a href="#">FAQ</a></li>
+				<li><a href="#">Careers</a></li>
+                &copy; 2023 Seedling Supplier. All rights reserved.
+			</ul>
+        </div>
+    </footer>
+    <script src="{{ url_for('static', path='js/modal.js') }}"></script>
+</body>
+</html>

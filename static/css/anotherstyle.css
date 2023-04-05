@@ -1,0 +1,377 @@
+/* Set font and background color for entire page */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #E1F3F0;
+}
+
+/* Set styling for header section */
+header {
+    background-color: #E1F3F0;
+    border-bottom: 1px solid #cccccc;
+    padding: 20px;
+}
+
+/* Set styling for logo */
+.logo {
+    float: left;
+}
+
+.logo .img {
+    max-width: 80%;
+    height: 60%;
+  }
+  
+/* Set styling for navigation links */
+.nav-links {
+    float: right;
+    margin-top: 10px;
+}
+
+/* Set styling for navigation links list */
+.nav-links ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+/* Set styling for navigation links list items */
+.nav-links li {
+    display: inline-block;
+    margin-left: 10px;
+}
+.sign-in-form {
+  max-width: 400px;
+  margin: 100px auto;
+  padding: 20px;
+  background-color: #fff;
+  border-radius: 5px;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+}
+
+.sign-in-form h2 {
+  text-align: center;
+  font-size: 28px;
+  margin-bottom: 20px;
+}
+
+.form-group {
+  margin-bottom: 20px;
+}
+
+.form-group label {
+  display: block;
+  font-size: 18px;
+  margin-bottom: 5px;
+}
+
+.form-group input {
+  width: 100%;
+  font-size: 16px;
+  padding: 10px;
+  border: none;
+  border-radius: 5px;
+  background-color: #f7f7f7;
+  box-shadow: inset 0px 0px 5px rgba(0, 0, 0, 0.1);
+}
+
+.btn {
+  display: block;
+  width: 100%;
+  padding: 10px;
+  border: none;
+  border-radius: 5px;
+  font-size: 18px;
+  font-weight: bold;
+  text-align: center;
+  color: #fff;
+  background-color: #007bff;
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+}
+
+.btn:hover {
+  background-color: #0062cc;
+}
+
+.sign-in-btn {
+  margin-top: 20px;
+}
+
+.google-btn {
+  margin-top: 10px;
+  background-color: #dc4e41;
+}
+
+.separator {
+  margin: 20px 0;
+  text-align: center;
+}
+
+.separator span {
+  display: inline-block;
+  font-size: 18px;
+  color: #999;
+  padding: 0 10px;
+}
+
+p {
+  text-align: center;
+  font-size: 16px;
+  margin-top: 20px;
+}
+
+p a {
+  color: #007bff;
+  text-decoration: none;
+}
+
+p a:hover {
+  text-decoration: underline;
+}
+
+
+/* Set styling for navigation links */
+.nav-links .navbtn {
+    background-color: #4CAF50;
+    color: white;
+    padding: 5px;
+    border: none;
+    border-radius: 10px;
+    margin-top: 5px;
+}
+
+/* Set styling for hero section */
+.hero {
+    margin-top: 40px;
+    text-align: center;
+}
+
+/* Set styling for search input field */
+.hero input[type=text] {
+    padding: 10px;
+    width: 50%;
+    border: 1px groove #4CAF50;
+    border-radius: 25px;
+    margin-right: 10px;
+}
+
+/* Set styling for search button */
+.hero button[type=submit] {
+    background-color: #4CAF50;
+    color: #ffffff;
+    padding: 10px;
+    border: none;
+    border-radius: 25px;
+}
+.dropdown {
+    position: relative;
+  }
+  
+  .dropdown .dropdown-menu {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    min-width: 100%;
+    z-index: 1;
+  }
+  
+  .dropdown:hover .dropdown-menu,
+  .dropdown:focus .dropdown-menu {
+    display: block;
+  }
+  
+.categories-container {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+    padding: 20px;
+    
+  }
+  
+/* Set styling for category section */
+.category {
+    float: left;
+    width: 25%;
+    
+    padding: 20px;
+}
+
+/* Set styling for seedlings section */
+.seedlings {
+    float: right;
+    width: 75%;
+    padding: 20px;
+}
+
+/* Set styling for seedling elements */
+.seedling {
+    float: left;
+    width: 25%;
+    margin-right: 20px;
+    margin-bottom: 20px;
+   
+    padding: 20px;
+    text-align: center;
+}
+
+/* Set styling for seedling images */
+.seedling img {
+    width: 100%;
+    height: auto;
+    margin-bottom: 10px;
+}
+
+/* Set styling for seedling name */
+.seedling h4 {
+    margin-top: 0;
+}
+
+/* Set styling for seedling price */
+.seedling .price {
+    font-weight: bold;
+    margin-top: 10px;
+}
+
+/* Set styling for buy button */
+.seedling .buy {
+    background-color: #4CAF50;
+    color: #ffffff;
+    padding: 10px;
+    border: none;
+    border-radius: 25px;
+    margin-top: 10px;
+}
+
+/* Set styling for footer section */
+footer {
+    background-color: #333333;
+    color: #ffffff;
+    padding: 20px;
+    text-align: center;
+}
+
+/* Set styling for footer links */
+.footer-links {
+    margin-top: 10px;
+}
+
+/* Set styling for footer links list */
+.footer-links ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+/* Set styling for footer links list items */
+.footer-links li {
+    display: inline-block;
+    margin-left: 20px;
+}
+
+/* Set styling for footer links */
+.footer-links a {
+    color: #ffffff;
+    text-decoration: none;
+}
+
+.modal {
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Sit on top */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+  }
+  
+  .close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+  }
+  
+  .close:hover,
+  .close:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+  }
+  
+  .dropdown {
+    position: relative;
+    display: inline-block;
+  }
+  .dropdown-content {
+    display: none;
+    position: absolute;
+  }
+  .dropdown:hover .dropdown-content {
+    display: block;
+  }
+  .tooltip {
+    visibility: hidden;
+    position: absolute;
+    z-index: 1;
+  }
+  
+  #profileBtn:hover + .tooltip {
+    visibility: visible;
+  }
+  .dropdown .tooltip {
+    visibility: hidden;
+    background-color: #555;
+    color: #fff;
+    text-align: center;
+    padding: 5px 0;
+    position: absolute;
+    z-index: 1;
+    bottom: 125%;
+    left: 50%;
+    margin-left: -60px;
+    opacity: 0;
+    transition: opacity 0.3s;
+    font-size: 14px;
+  }
+  
+  .dropdown:hover .tooltip {
+    visibility: visible;
+    opacity: 1;
+  }
+
+ .close {
+    position: absolute;
+    top: 10px;
+    right: 20px;
+    color: white;
+    font-size: 70px;
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+  }
+  .form-group input[type="checkbox"] {
+    display: none;
+  }
+  
+  .form-group label[for="stayLoggedIn"]:before {
+    content: '';
+    display: inline-block;
+    width: 16px;
+    height: 16px;
+    margin-right: 10px;
+    border-radius: 3px;
+    border: 2px solid #aaa;
+  }
+  
+  .form-group input[type="checkbox"]:checked + label:before {
+    content: '\2713';
+    background-color: #007bff;
+    color: #fff;
+    text-align: center;
+    font-size: 12px;
+    line-height: 14px;
+  }
+  
